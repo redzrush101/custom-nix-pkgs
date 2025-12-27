@@ -6,7 +6,7 @@
 
 python3Packages.buildPythonApplication {
   pname = "mtkclient";
-  version = "2.0.1-unstable-2025-12-17"; # Placeholder, will be updated by update.sh
+  version = "2.0.2-unstable-2025-12-17"; # Placeholder, will be updated by update.sh
   pyproject = true;
 
   src = fetchFromGitHub {

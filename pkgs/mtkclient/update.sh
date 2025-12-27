@@ -11,7 +11,10 @@ echo "Fetching latest commit for $REPO..."
 LATEST_COMMIT_JSON=$(curl -s "https://api.github.com/repos/$REPO/commits/$BRANCH")
 REV=$(echo "$LATEST_COMMIT_JSON" | jq -r .sha)
 DATE=$(echo "$LATEST_COMMIT_JSON" | jq -r .commit.author.date | cut -d'T' -f1)
-VERSION="2.0.1-unstable-$DATE"
+
+echo "Fetching base version from pyproject.toml..."
+BASE_VERSION=$(curl -s "https://raw.githubusercontent.com/$REPO/$BRANCH/pyproject.toml" | grep "^version =" | cut -d'"' -f2)
+VERSION="$BASE_VERSION-unstable-$DATE"
 
 echo "Latest commit: $REV"
 echo "Date: $DATE"
