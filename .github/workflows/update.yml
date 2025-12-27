@@ -25,6 +25,9 @@ jobs:
       - name: Update iflow-cli
         run: ./pkgs/iflow-cli/update.sh
 
+      - name: Update mtkclient
+        run: ./pkgs/mtkclient/update.sh
+
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
