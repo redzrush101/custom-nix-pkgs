@@ -28,6 +28,9 @@ jobs:
       - name: Update mtkclient
         run: ./pkgs/mtkclient/update.sh
 
+      - name: Update opencode
+        run: ./pkgs/shuvcode/update.sh
+
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"

@@ -15,6 +15,6 @@ echo "Integrity hash: $INTEGRITY"
 
 # Update default.nix
 sed -i "s/version = \".*\";/version = \"$VERSION\";/" "$DEFAULT_NIX"
-sed -i "s/hash = \".*\";/hash = \"$INTEGRITY\";/" "$DEFAULT_NIX"
+sed -i "s|hash = \".*\";|hash = \"$INTEGRITY\";|" "$DEFAULT_NIX"
 
 echo "Successfully updated $DEFAULT_NIX"

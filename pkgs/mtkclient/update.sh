@@ -28,6 +28,6 @@ echo "SRI Hash: $SRI_HASH"
 
 sed -i "s/version = \".*\";/version = \"$VERSION\";/" "$DEFAULT_NIX"
 sed -i "s/rev = \".*\";/rev = \"$REV\";/" "$DEFAULT_NIX"
-sed -i "s/hash = \".*\";/hash = \"$SRI_HASH\";/" "$DEFAULT_NIX"
+sed -i "s|hash = \".*\";|hash = \"$SRI_HASH\";|" "$DEFAULT_NIX"
 
 echo "Successfully updated $DEFAULT_NIX"
