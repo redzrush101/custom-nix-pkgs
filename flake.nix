@@ -4,39 +4,26 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    shuvcode.url = "github:Latitudes-Dev/shuvcode";
   };
 
-  outputs = { self, nixpkgs, flake-utils, shuvcode }:
+  outputs = { self, nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-linux" ] (system:
       let
         pkgs = import nixpkgs { inherit system; };
       in
       {
-          packages = {
+        packages = {
           iloader = pkgs.callPackage ./pkgs/iloader/default.nix { };
           iflow-cli = pkgs.callPackage ./pkgs/iflow-cli/default.nix { };
           mtkclient = pkgs.callPackage ./pkgs/mtkclient/default.nix { };
-          shuvcode = shuvcode.packages.${system}.default.overrideAttrs (old: {
-            node_modules = (pkgs.callPackage "${shuvcode}/nix/node-modules.nix" {
-              hash = "sha256-CPaAI4Vtj43hDskqEUCO/KH3RPFyPkq8+qWh5ldppDs=";
-            }) {
-              inherit (old) version src;
-              canonicalizeScript = "${shuvcode}/nix/scripts/canonicalize-node-modules.ts";
-              normalizeBinsScript = "${shuvcode}/nix/scripts/normalize-bun-binaries.ts";
-            };
-          });
-          shuvcode-desktop = pkgs.callPackage ./pkgs/shuvcode-desktop/default.nix {
-            opencode = self.packages.${system}.shuvcode;
-            iconSrc = "${shuvcode}/packages/desktop/src-tauri/icons/prod/icon.png";
-          };
+          opencode-desktop = pkgs.callPackage ./pkgs/opencode-desktop/default.nix { };
         };
 
-          apps = {
+        apps = {
           iloader = flake-utils.lib.mkApp { drv = self.packages.${system}.iloader; };
           iflow = flake-utils.lib.mkApp { drv = self.packages.${system}.iflow-cli; };
           mtk = flake-utils.lib.mkApp { drv = self.packages.${system}.mtkclient; };
-          shuvcode = flake-utils.lib.mkApp { drv = self.packages.${system}.shuvcode; };
+          opencode = flake-utils.lib.mkApp { drv = self.packages.${system}.opencode-desktop; };
         };
 
         formatter = pkgs.nixpkgs-fmt;

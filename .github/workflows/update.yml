@@ -28,8 +28,8 @@ jobs:
       - name: Update mtkclient
         run: ./pkgs/mtkclient/update.sh
 
-      - name: Update shuvcode
-        run: ./pkgs/shuvcode-desktop/update.sh
+      - name: Update opencode-desktop
+        run: ./pkgs/opencode-desktop/update.sh
 
       - name: Commit and push changes
         run: |
