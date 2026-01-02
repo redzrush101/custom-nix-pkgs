@@ -17,7 +17,15 @@
           iloader = pkgs.callPackage ./pkgs/iloader/default.nix { };
           iflow-cli = pkgs.callPackage ./pkgs/iflow-cli/default.nix { };
           mtkclient = pkgs.callPackage ./pkgs/mtkclient/default.nix { };
-          shuvcode = shuvcode.packages.${system}.default;
+          shuvcode = shuvcode.packages.${system}.default.overrideAttrs (old: {
+            node_modules = (pkgs.callPackage "${shuvcode}/nix/node-modules.nix" {
+              hash = "sha256-CPaAI4Vtj43hDskqEUCO/KH3RPFyPkq8+qWh5ldppDs=";
+            }) {
+              inherit (old) version src;
+              canonicalizeScript = "${shuvcode}/nix/scripts/canonicalize-node-modules.ts";
+              normalizeBinsScript = "${shuvcode}/nix/scripts/normalize-bun-binaries.ts";
+            };
+          });
           shuvcode-desktop = pkgs.callPackage ./pkgs/shuvcode-desktop/default.nix {
             opencode = self.packages.${system}.shuvcode;
             iconSrc = "${shuvcode}/packages/desktop/src-tauri/icons/prod/icon.png";
