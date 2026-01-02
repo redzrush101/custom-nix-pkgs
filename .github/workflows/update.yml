@@ -29,6 +29,8 @@ jobs:
         run: ./pkgs/mtkclient/update.sh
 
       - name: Update opencode
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: ./pkgs/shuvcode/update.sh
 
       - name: Commit and push changes
