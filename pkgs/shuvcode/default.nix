@@ -5,13 +5,12 @@ stdenv.mkDerivation rec {
   version = "1.0.223-1";
 
   src = fetchurl {
-    url = "https://github.com/Latitudes-Dev/shuvcode/releases/download/v${version}/shuvcode-linux-x64.tar.gz";
+    url = "https://github.com/Latitudes-Dev/shuvcode/releases/download/v${version}/shuvcode-linux-x64-baseline.tar.gz";
     hash = "sha256-x084darv3wzvnSRcFVpzXkCWT76gOzCQyUIpoCGsZB4=";
   };
 
   nativeBuildInputs = [ autoPatchelfHook ];
 
-  # Dependencies typically needed by bun-compiled binaries or standard linux binaries
   buildInputs = [
     zlib
     libgcc
