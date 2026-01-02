@@ -17,7 +17,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/sst/opencode/releases/download/v${version}/opencode-desktop-linux-amd64.deb";
-    hash = "sha256-v1Zm8rUO0SCzsg/OhZ5jSVRw4OoOvw50+Rdzy9FvFnE=";
+    hash = "sha256-v1Zm8rUO0SCDsg/OhZ5jSVRw4OoOvw50+Rdzy9FvFnE=";
   };
 
   nativeBuildInputs = [
