@@ -16,14 +16,14 @@
           iloader = pkgs.callPackage ./pkgs/iloader/default.nix { };
           iflow-cli = pkgs.callPackage ./pkgs/iflow-cli/default.nix { };
           mtkclient = pkgs.callPackage ./pkgs/mtkclient/default.nix { };
-          opencode-desktop = pkgs.callPackage ./pkgs/opencode-desktop/default.nix { };
+
         };
 
         apps = {
           iloader = flake-utils.lib.mkApp { drv = self.packages.${system}.iloader; };
           iflow = flake-utils.lib.mkApp { drv = self.packages.${system}.iflow-cli; };
           mtk = flake-utils.lib.mkApp { drv = self.packages.${system}.mtkclient; };
-          opencode = flake-utils.lib.mkApp { drv = self.packages.${system}.opencode-desktop; };
+
         };
 
         formatter = pkgs.nixpkgs-fmt;
