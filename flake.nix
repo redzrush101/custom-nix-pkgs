@@ -16,6 +16,7 @@
           iloader = pkgs.callPackage ./pkgs/iloader/default.nix { };
           iflow-cli = pkgs.callPackage ./pkgs/iflow-cli/default.nix { };
           mtkclient = pkgs.callPackage ./pkgs/mtkclient/default.nix { };
+          openspec = pkgs.callPackage ./pkgs/openspec/default.nix { };
 
         };
 
@@ -23,6 +24,7 @@
           iloader = flake-utils.lib.mkApp { drv = self.packages.${system}.iloader; };
           iflow = flake-utils.lib.mkApp { drv = self.packages.${system}.iflow-cli; };
           mtk = flake-utils.lib.mkApp { drv = self.packages.${system}.mtkclient; };
+          openspec = flake-utils.lib.mkApp { drv = self.packages.${system}.openspec; };
 
         };
 
