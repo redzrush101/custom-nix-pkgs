@@ -8,11 +8,11 @@
 
 stdenv.mkDerivation rec {
   pname = "iflow-cli";
-  version = "0.5.6";
+  version = "0.5.8";
 
   src = fetchurl {
     url = "https://registry.npmjs.org/@iflow-ai/iflow-cli/-/iflow-cli-${version}.tgz";
-    hash = "sha512-dhDEErpkrVvrOPoL/xfWluNIMWCTqJOeJBg3w7sS1VTKl2oPESXIi8nLjW1HKINHN1D47K9lOqJuL4Fk+VQ6QA==";
+    hash = "sha512-fZXWpx8W1L3Z2sPfXgwG3pcgXoHOt3lc6FGi8iFkZHKLcyPqaRXKtCIDHV3WEwWrumWXRRn0CRoIEe/+ERzYsA==";
   };
 
   nativeBuildInputs = [ makeWrapper ];
