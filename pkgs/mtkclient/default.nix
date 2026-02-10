@@ -6,14 +6,14 @@
 
 python3Packages.buildPythonApplication {
   pname = "mtkclient";
-  version = "2.1.3-unstable-2026-02-06"; # Placeholder, will be updated by update.sh
+  version = "2.1.3-unstable-2026-02-09"; # Placeholder, will be updated by update.sh
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "bkerler";
     repo = "mtkclient";
-    rev = "32d7a0e1dddf5904fd5adde5e4fd7402e4ae01c4"; # Placeholder
-    hash = "sha256-JsPkUORt98q/mMlNt9TeCgTCjainIFMA5pezdE2gTko="; # Placeholder
+    rev = "d14d139d5ead9b47fa89fe967254e91b46bf18bc"; # Placeholder
+    hash = "sha256-6zo59xaXv/iAPc9DBn4zHIhhURG3BJ0+c4s22q6BN1E="; # Placeholder
   };
 
   build-system = [ python3Packages.hatchling ];
