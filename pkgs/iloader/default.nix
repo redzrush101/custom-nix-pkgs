@@ -19,11 +19,11 @@
 
 stdenv.mkDerivation rec {
   pname = "iloader";
-  version = "2.0.11";
+  version = "2.1.1";
 
   src = fetchurl {
     url = "https://github.com/nab138/iloader/releases/download/v${version}/iloader-linux-amd64.deb";
-    sha256 = "a86c8c82de1b04241df2866c511f76164833341c07fa01d56a6bd780988150ae";
+    sha256 = "6348ceeb3e5904be1cc4426d38cb4504069a2b91a8625335b69a6379e02e4048";
   };
 
   nativeBuildInputs = [
